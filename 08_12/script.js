@@ -20,7 +20,9 @@ const everydayPack = new Backpack(
 
 const content = `
     <figure class="backpack__image">
-      <img src=${everydayPack.image} alt="" loading="lazy" />
+      <img src=${
+        everydayPack.image
+      } alt="" loading="lazy" />
     </figure>
     <h1 class="backpack__name">${everydayPack.name}</h1>
     <ul class="backpack__features">
@@ -55,8 +57,11 @@ newArticle.innerHTML = content;
 
 main.append(newArticle);
 
-if (everydayPack.backpackAge() >= 30) {
-  console.log("Backpack is used")
+if (
+  everydayPack.volume > 15 &&
+  everydayPack.pocketNum >= 5
+) {
+  console.log("Backpack is big");
 } else {
-  console.log("Backpack is new")
+  console.log("Backpack is small");
 }
