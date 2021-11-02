@@ -4,7 +4,11 @@
  */
 
 // Helper function to format currency numbers. Used by tipCalculator
-const formatter = (locale = "en-US", currency = "USD", value) => {
+const formatter = (
+  locale = "en-US",
+  currency = "USD",
+  value
+) => {
   let formattedValue = new Intl.NumberFormat(locale, {
     style: "currency",
     currency: currency,
@@ -38,7 +42,13 @@ const printHTML = (finalTip) => {
 };
 
 // Create a finalTip object with all the data. Send it to the printHTML callback.
-const tipCalculator = (sum, percentage, locale, currency) => {
+const tipCalculator = (
+  sum,
+  percentage,
+  locale,
+  currency,
+  callback
+) => {
   let tip = sum * (percentage / 100);
   let total = sum + tip;
 
@@ -48,6 +58,7 @@ const tipCalculator = (sum, percentage, locale, currency) => {
     tip: formatter(locale, currency, tip),
     total: formatter(locale, currency, total),
   };
+  callback(finalTip);
 };
 
-tipCalculator(29.95, 18, "de-DE", "EUR");
+tipCalculator(29.95, 18, "de-DE", "EUR", printHTML);
